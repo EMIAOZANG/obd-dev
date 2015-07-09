@@ -37,6 +37,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+#allauth specific apps
+    'django.cotrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.google',
+
+    'expose',
+    'contact',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,13 +72,18 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                #required by django-allauth
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #allauth specific context processors
+                'allauth.account.context_processors.account',
+                'allauth.socialaccount.context_processors.socialaccount',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'diag.wsgi.application'
 
@@ -80,6 +97,13 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#allauth authentication backends specification
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend', #login by django admin
+        'allauth.account.auth_backends.AuthenticationBackend', #login by allauth
+
+)
 
 
 # Internationalization
@@ -100,3 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#specified for allauth 
+SITE_ID = 1
