@@ -39,13 +39,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
 #allauth specific apps
-    'django.cotrib.sites',
+    'django.contrib.sites',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
-    'allauth.google',
+    'allauth.socialaccount.providers.google',
 
     'expose',
     'contact',

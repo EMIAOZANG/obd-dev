@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^show_info/$','expose.views.show_url_info',name='show_url_info'),
     url(r'^$','expose.views.index',name='home'), #url pattern for app name expose 
     url(r'^contact\S+/$','contact.views.index',name='contact_index'),
+    url(r'^accounts/', include(allauth.urls)), #url pattern for allauth
 )
