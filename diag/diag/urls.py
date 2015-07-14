@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
 
+admin.autodiscover()
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^show_info/([^\#]+)$','expose.views.show_url_info_NB', name='show_url_info_NB'),
     url(r'^show_info/$','expose.views.show_url_info',name='show_url_info'),
     url(r'^$','expose.views.index',name='home'), #url pattern for app name expose 
     url(r'^contact\S+/$','contact.views.index',name='contact_index'),
-    url(r'^accounts/', include(allauth.urls)), #url pattern for allauth
+    url(r'^accounts/', include('allauth.urls')), #url pattern for allauth
 )

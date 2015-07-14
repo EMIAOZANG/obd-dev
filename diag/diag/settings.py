@@ -45,7 +45,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
 
-    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 
     'expose',
     'contact',
@@ -126,4 +126,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #specified for allauth 
-SITE_ID = 1
+SITE_ID = 2
+
+SOCIALACCOUNT_PROVIDERS = {
+        'facebook':{
+            'SCOPE':['email'],
+            'AUTH_PARAMS':{'auth_type':'reauthenticate'},
+            'METHOD':'oauth2',
+            'VERIFIED_EMAIL':False
+            }
+}
+
